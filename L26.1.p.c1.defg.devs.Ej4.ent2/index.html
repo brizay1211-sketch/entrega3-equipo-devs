@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Empresa</title>
+</head>
+<body>
+    <div id="body">
+        <!-- Formulario para ingresar personal (oculto inicialmente) -->
+        <section id="personal" hidden>
+            <h5>Procesar Personal</h5>
+            <div>
+                <label>Nombre: <input type="text" id="personal_inNombre" placeholder="Jose"></label>
+            </div>
+            <div>
+                <label>Tipo: <input type="number" id="personal_inTipo" placeholder="1=Obrero, 2=Administrativo"></label>
+            </div>
+            <div>
+                <label>Salario base: <input type="number" id="personal_inSalario" placeholder="Ej: 100"></label>
+            </div>
+            <div>
+                <label>Bono: <input type="number" id="personal_inBono" placeholder="Ej: 50" value="0"></label>
+            </div>
+            <div>
+                <button id="personal_btCancelar">Cancelar</button>
+                <button id="personal_btAceptar">Aceptar</button>
+            </div>
+        </section>
+
+        <hr>
+
+        <button id="body_btProcesarPersonal">Procesar Personal</button>
+
+        <div>Monto total obreros: <span id="body_lblTotalObreros">0</span></div>
+        <div>Promedio obreros: <span id="body_lblPromedioObreros">0</span></div>
+        <div>Monto total administrativos: <span id="body_lblTotalAdministrativos">0</span></div>
+        <div>Promedio administrativos: <span id="body_lblPromedioAdministrativos">0</span></div>
+    </div>
+
+    <script type="module">
+        import Cl_cEmpresa from "./dist/controllers/Cl_cEmpresa.js";
+        new Cl_cEmpresa();
+    </script>
+</body>
+</html>
