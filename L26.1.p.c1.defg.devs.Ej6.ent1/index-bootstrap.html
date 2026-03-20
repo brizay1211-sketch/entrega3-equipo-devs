@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa - Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app-empresa" class="container mt-5">
+        <h2>Gestión de Personal (Bootstrap)</h2>
+        <button type="button" class="btn btn-primary" id="body_btProcesarPersonal">Procesar Personal</button>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="alert alert-info">
+                    Monto total obreros: $<span id="body_lblTotalObreros" class="fw-bold">0</span>
+                </div>
+                <div class="alert alert-info">
+                    Promedio obreros: $<span id="body_lblPromedioObreros" class="fw-bold">0</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="alert alert-success">
+                    Monto total administrativos: $<span id="body_lblTotalAdministrativos" class="fw-bold">0</span>
+                </div>
+                <div class="alert alert-success">
+                    Promedio administrativos: $<span id="body_lblPromedioAdministrativos" class="fw-bold">0</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="alert alert-secondary">
+            Registros procesados: <span id="body_lblRegistrosProcesados" class="fw-bold">0</span>
+        </div>
+    </div>
+
+    <!-- Modal para ingresar personal -->
+    <div class="modal fade" id="personal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Procesar Personal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="personal_inNombre" placeholder="Jose">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tipo (1=Obrero, 2=Administrativo):</label>
+                        <input type="number" class="form-control" id="personal_inTipo" placeholder="1 o 2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Salario base:</label>
+                        <input type="number" class="form-control" id="personal_inSalario" placeholder="Ej: 100">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Bono:</label>
+                        <input type="number" class="form-control" id="personal_inBono" placeholder="Ej: 50" value="0">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="personal_btCancelar" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="personal_btAceptar">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module">
+        import Cl_cEmpresa from "./dist/controllers/Cl_cEmpresa.js";
+        import Cl_cPersonal from "./dist/controllers/Cl_cPersonal.js";
+        import Cl_vEmpresaBootstrap from "./dist/views/Cl_vEmpresaBootstrap.js";
+        import Cl_vPersonalBootstrap from "./dist/views/Cl_vPersonalBootstrap.js";
+
+        const vistaEmpresa = new Cl_vEmpresaBootstrap();
+        const vistaPersonal = new Cl_vPersonalBootstrap();
+        const controladorPersonal = new Cl_cPersonal(vistaPersonal);
+        new Cl_cEmpresa(vistaEmpresa, controladorPersonal);
+    </script>
+</body>
+</html>
